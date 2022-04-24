@@ -2,6 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:memorygame/Screens/GameScreen.dart';
 import 'package:memorygame/Screens/HelpScreen1.dart';
+import 'package:memorygame/Screens/HomeScreen.dart';
 import 'package:memorygame/Screens/StartScreen.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -16,6 +17,6 @@ class MyApp extends StatelessWidget{
     splashTransition: SplashTransition.fadeTransition,
     pageTransitionType: PageTransitionType.leftToRightWithFade,
     backgroundColor: Colors.lightBlueAccent,
-    nextScreen: StartScreen())
+    nextScreen: HomeScreen())
   );
 }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:memorygame/Screens/GameScreen.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:memorygame/Screens/HomeScreen.dart';
 
 
 class HelpScreen extends StatefulWidget{
@@ -21,7 +22,7 @@ class _HelpScreenState extends State<HelpScreen> {
   @override
   Widget build(BuildContext context) {
     speak() async {
-      await flutterTts.speak("fuck me bitch");
+      await flutterTts.speak("Find the");
     }
     return MaterialApp(
       home: Scaffold(
@@ -30,7 +31,12 @@ class _HelpScreenState extends State<HelpScreen> {
           backgroundColor: Colors.transparent,
           leading: IconButton(
               icon: Icon(Icons.arrow_back_outlined),
-              onPressed: () {}),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen())
+                );
+              }),
           elevation: 0,
         ),
         body: Container(
