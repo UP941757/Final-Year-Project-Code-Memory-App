@@ -118,7 +118,12 @@ class _HelpScreenState extends State<HelpScreen> {
           ),
         ),
         floatingActionButton:
-        FloatingActionButton(child: Icon(Icons.home), onPressed: () {},
+        FloatingActionButton(child: Icon(Icons.home), onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen())
+          );
+        },
         ),
         floatingActionButtonLocation:
         FloatingActionButtonLocation.centerDocked,

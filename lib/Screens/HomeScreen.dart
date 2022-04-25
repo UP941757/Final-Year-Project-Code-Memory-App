@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter/rendering.dart';
 import 'package:memorygame/Screens/HelpScreen1.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
@@ -14,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final FlutterTts flutterTts = FlutterTts();
 
   bool isBold = false;
+  var textSize = 12;
 
 
   @override
@@ -24,17 +26,47 @@ class _HomeScreenState extends State<HomeScreen> {
     speak2() async{
       await flutterTts.speak("Pattern Recognition");
     }
+    speak3() async{
+      await flutterTts.speak("Coming Soon");
+    }
     return MaterialApp(
       home: Scaffold(
-        body: Container(
-          child: Row(
+        backgroundColor: Colors.lightBlueAccent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          centerTitle: true,
+          title:Text(
+              "Weekly Games",
+          ),
+            titleTextStyle: TextStyle(
+              fontWeight: isBold ? FontWeight.bold: FontWeight.normal,
+              color: Colors.black,
+              fontSize: 35
+            ),
+        ),
+        body:
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.lightBlueAccent,
+                Colors.white60
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            )
+          ),
+          child:
+          Column(
             children: <Widget>[
-              Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Column(
                     children: <Widget>[
                       Container(
-                        padding: const EdgeInsets.all(60.0),
+                        padding: const EdgeInsets.all(40.0),
                         decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
                           image: DecorationImage(
@@ -46,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             "Tile Matcher",
                             textAlign: TextAlign.start,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: textSize + 1,
                               fontWeight: isBold ? FontWeight.bold: FontWeight.normal,
                             )
                         ),
@@ -79,73 +111,214 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       )
                     ],
-                  )
-                ],
-              ),
-              Column(
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(60.0),
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/PatternRecog.jpg'),
-                          fit: BoxFit.cover
-                      ),
-                    ) ,
-                    child: Text(
-                        "Pattern Recognition",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: isBold ? FontWeight.bold: FontWeight.normal,
-                        )
-                    ),
                   ),
-                  Row(
+                  Column(
                     children: <Widget>[
-                      Tooltip(
-                        message: "(Error 400) Tap button once",
-                        showDuration: const Duration(seconds: 2),
-                        waitDuration: const Duration(seconds: 1),
-                        child: ElevatedButton(
-                          onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => HelpScreen())
-                            );
-                          },
-                          child: Icon(Icons.arrow_right),
+                      Container(
+                        padding: const EdgeInsets.all(60.0),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/PatternR.jpg'),
+                              fit: BoxFit.cover
+                          ),
+                        ) ,
+                        child: Text(
+                            "Pattern Recognition",
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: textSize + 2,
+                              fontWeight: isBold ? FontWeight.bold: FontWeight.normal,
+                            )
                         ),
                       ),
-                      Tooltip(
-                        message: "(Error 400) Tap button once",
-                        showDuration: const Duration(seconds: 2),
-                        waitDuration: const Duration(seconds: 1),
-                        child:ElevatedButton(
-                            onPressed: () => speak2(),
-                            child: Icon(Icons.volume_up_rounded)
-                        ),
-                      ),
+                      Row(
+                        children: <Widget>[
+                          Tooltip(
+                            message: "(Error 400) Tap button once",
+                            showDuration: const Duration(seconds: 2),
+                            waitDuration: const Duration(seconds: 1),
+                            child: ElevatedButton(
+                              onPressed: (){
+                              },
+                              child: Icon(Icons.arrow_right),
+                            ),
+                          ),
+                          Tooltip(
+                            message: "(Error 400) Tap button once",
+                            showDuration: const Duration(seconds: 2),
+                            waitDuration: const Duration(seconds: 1),
+                            child:ElevatedButton(
+                                onPressed: () => speak2(),
+                                child: Icon(Icons.volume_up_rounded)
+                            ),
+                          ),
+                        ],
+                      )
                     ],
-                  )
+                  ),
+                  Column(
+                      children: <Widget>[
+                        Container(
+                          padding: const EdgeInsets.all(40.0),
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                            color: Colors.white30
+                          ) ,
+                          child: Text(
+                              "Coming Soon",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                fontSize: textSize + 2,
+                                fontWeight: isBold ? FontWeight.bold: FontWeight.normal,
+                              )
+                          ),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Tooltip(
+                              message: "(Error 400) Tap button once",
+                              showDuration: const Duration(seconds: 2),
+                              waitDuration: const Duration(seconds: 1),
+                              child: ElevatedButton(
+                                onPressed: (){
+                                },
+                                child: Icon(Icons.arrow_right),
+                              ),
+                            ),
+                            Tooltip(
+                              message: "(Error 400) Tap button once",
+                              showDuration: const Duration(seconds: 2),
+                              waitDuration: const Duration(seconds: 1),
+                              child:ElevatedButton(
+                                  onPressed: () => speak3(),
+                                  child: Icon(Icons.volume_up_rounded)
+                              ),
+                            ),
+                          ],
+                        )
+                      ]
+                  ),
                 ],
-              ),
-              Column(
-
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Text(
+                          "Daily Games",
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: isBold ? FontWeight.bold: FontWeight.normal,
+                          )
+                      ),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Column(
-
-
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Container(
+                            padding: const EdgeInsets.all(30.0),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                              image: DecorationImage(
+                                  image: AssetImage('assets/images/TileMatchBackground.jpg'),
+                                  fit: BoxFit.cover
+                              ),
+                            ) ,
+                            child: Text(
+                                "Tile Matcher",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                  fontSize: textSize + 1,
+                                  fontWeight: isBold ? FontWeight.bold: FontWeight.normal,
+                                )
+                            ),
+                          ),
+                           Row(
+                            children: <Widget>[
+                              Tooltip(
+                                message: "(Error 400) Tap button once",
+                                showDuration: const Duration(seconds: 2),
+                                waitDuration: const Duration(seconds: 1),
+                                child: ElevatedButton(
+                                  onPressed: (){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => HelpScreen())
+                                    );
+                                  },
+                                  child: Icon(Icons.arrow_right),
+                                ),
+                              ),
+                              Tooltip(
+                                message: "(Error 400) Tap button once",
+                                showDuration: const Duration(seconds: 2),
+                                waitDuration: const Duration(seconds: 1),
+                                child:ElevatedButton(
+                                    onPressed: () => speak1(),
+                                    child: Icon(Icons.volume_up_rounded)
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      )
+                    ],
                   ),
                   Column(
-
+                      children: <Widget>[
+                        Container(
+                          padding: const EdgeInsets.all(30.0),
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                            color: Colors.white30
+                          ) ,
+                          child: Text(
+                              "Coming Soon",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                fontSize: textSize + 1,
+                                fontWeight: isBold ? FontWeight.bold: FontWeight.normal,
+                              )
+                          ),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Tooltip(
+                              message: "(Error 400) Tap button once",
+                              showDuration: const Duration(seconds: 2),
+                              waitDuration: const Duration(seconds: 1),
+                              child: ElevatedButton(
+                                onPressed: (){
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => HelpScreen())
+                                  );
+                                },
+                                child: Icon(Icons.arrow_right),
+                              ),
+                            ),
+                            Tooltip(
+                              message: "(Error 400) Tap button once",
+                              showDuration: const Duration(seconds: 2),
+                              waitDuration: const Duration(seconds: 1),
+                              child:ElevatedButton(
+                                  onPressed: () => speak3(),
+                                  child: Icon(Icons.volume_up_rounded)
+                              ),
+                            ),
+                          ],
+                        )
+                      ]
                   ),
-                  Column(
-
-                  )
                 ]
               )
             ],
@@ -160,6 +333,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () => setState(() => isBold = !isBold ),
                 child: const Text("Bold")
             ),
+            TextButton(
+                onPressed: () {
+                  textSize = textSize + 1;
+                  setState(() {
+                  });
+                  if(textSize >20){
+                    textSize = 12;
+                  }
+                },
+                child: Text("Enlarge")
+            )
           ],
         ),
       ),
