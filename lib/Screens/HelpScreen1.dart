@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:memorygame/Screens/GameScreen.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:memorygame/Screens/GameScreen2.dart';
+import 'package:memorygame/Screens/GameScreen3.dart';
 import 'package:memorygame/Screens/HomeScreen.dart';
 
 
@@ -22,7 +24,7 @@ class _HelpScreenState extends State<HelpScreen> {
   @override
   Widget build(BuildContext context) {
     speak() async {
-      await flutterTts.speak("Find the");
+      await flutterTts.speak("Find and press all the matching tiles, within the given time ");
     }
     return MaterialApp(
       home: Scaffold(
@@ -65,7 +67,7 @@ class _HelpScreenState extends State<HelpScreen> {
                   color: Colors.lightBlueAccent,
                 ) ,
                 child: Text(
-                    "yo",
+                    "Find and press all the matching tiles, within the given time",
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       fontSize: 12,
@@ -96,12 +98,22 @@ class _HelpScreenState extends State<HelpScreen> {
                   ),
                   ElevatedButton(
                       onPressed: () {
-
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GameScreen2())
+                        );
                       },
                       child: Text("Medium")
                   ),
                   ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GameScreen3())
+                        );
+                      },
                       child: Text("Hard")
                   ),
                 ],

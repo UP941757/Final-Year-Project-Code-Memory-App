@@ -6,14 +6,14 @@ import 'package:memorygame/Screens/HelpScreen1.dart';
 import 'package:memorygame/Screens/HomeScreen.dart';
 
 
-class GameScreen extends StatefulWidget{
-  const GameScreen({Key? key}) : super(key: key);
+class GameScreen3 extends StatefulWidget{
+  const GameScreen3({Key? key}) : super(key: key);
 
   @override
-  GameScreenState createState() => GameScreenState();
+  GameScreen3State createState() => GameScreen3State();
 }
 
-class GameScreenState extends State<GameScreen>{
+class GameScreen3State extends State<GameScreen3>{
   List<GlobalKey<FlipCardState>> cardStateKeys = [
     GlobalKey<FlipCardState>(),
     GlobalKey<FlipCardState>(),
@@ -33,14 +33,14 @@ class GameScreenState extends State<GameScreen>{
 
 
 
-  int time = 120;
+  int time = 30;
   late Timer timer;
   startTimer(){
     timer = Timer.periodic(Duration(seconds:1),(t){
       setState(() {
         time = time - 1;
       });
-  });
+    });
   }
 
   @override
@@ -69,45 +69,45 @@ class GameScreenState extends State<GameScreen>{
       ),
       body: SafeArea(
         child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "$time",
-                style: Theme.of(context).textTheme.displayMedium,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "$time",
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
               ),
-            ),
-            Theme(
-              data: ThemeData.dark(),
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
+              Theme(
+                data: ThemeData.dark(),
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
                   child: GridView.builder(
                     shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                     ),
                     itemBuilder: (context,index)=>FlipCard(
-                      key: cardStateKeys[index],
-                      onFlip: (){
-                        if(!flip){
-                          flip = true;
-                          previousIndex = index;
-                        }else{
-                          flip = false;
-                          if(previousIndex != index){
-                            if(data[previousIndex] != data[index]){
-                              cardStateKeys[previousIndex]
-                                  .currentState
-                                  ?.toggleCard();
-                              previousIndex = index;
-                            }else{
-                              cardFlips[previousIndex] = false;
-                              cardFlips[index] = false;
-                              print("Found Match");
+                        key: cardStateKeys[index],
+                        onFlip: (){
+                          if(!flip){
+                            flip = true;
+                            previousIndex = index;
+                          }else{
+                            flip = false;
+                            if(previousIndex != index){
+                              if(data[previousIndex] != data[index]){
+                                cardStateKeys[previousIndex]
+                                    .currentState
+                                    ?.toggleCard();
+                                previousIndex = index;
+                              }else{
+                                cardFlips[previousIndex] = false;
+                                cardFlips[index] = false;
+                                print("Found Match");
+                              }
                             }
                           }
-                        }
-                      },
+                        },
                         direction: FlipDirection.HORIZONTAL,
                         flipOnTouch: cardFlips[index],
                         front: Container(margin: EdgeInsets.all(4.0),
@@ -124,11 +124,11 @@ class GameScreenState extends State<GameScreen>{
                           ),
                         )
                     ),
-                      itemCount:data.length,
+                    itemCount:data.length,
                   ),
+                ),
               ),
-            ),
-          ]
+            ]
         ),
       ),
       bottomNavigationBar: BottomAppBar(

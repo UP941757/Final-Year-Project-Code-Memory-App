@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:flutter/rendering.dart';
 import 'package:memorygame/Screens/HelpScreen1.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'dart:developer' as dev;
 
 
 class HomeScreen extends StatefulWidget {
@@ -20,6 +21,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    dev.log(
+        'Button Successfully Pressed Continue',
+      name: 'Home.Screen.Functionality',
+      error: 'Error Occurred at button press'
+    );
     speak1() async {
       await flutterTts.speak("Tile Matcher");
     }
@@ -105,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             waitDuration: const Duration(seconds: 1),
                           child:ElevatedButton(
                               onPressed: () => speak1(),
-                              child: Icon(Icons.volume_up_rounded)
+                              child: Icon(Icons.volume_up_rounded),
                           ),
                           ),
                         ],
